@@ -1,11 +1,11 @@
 {
   "name": "ramda-suggest",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A library to suggest functions to use given some input and a desired output",
   "main": "src/index.js",
   "bin": "bin/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublish": "npm version"
   },
   "repository": {
     "type": "git",
