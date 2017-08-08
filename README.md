@@ -31,17 +31,10 @@ R.sum([1, 2, 3, 4, 5]) = 15
 #### Usage
 
 Install this package in the typical way; 
-> _(**N.B.** This hasn't been published to NPM **yet**...)_
 
 ```bash
-npm install
-npm link
-```
+npm install -g ramda-suggest
 
-This will link a command line tool which can be run in the following
-way
-
-```bash
 ramda-suggest true
 
 # T  [type:Function] : R.T() → true
