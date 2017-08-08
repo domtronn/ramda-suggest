@@ -25,7 +25,7 @@ module.exports = async (name) => {
         .map(([ type, ...docs ]) => [ type.replace(/[{}]/g, ''), docs.join(' ') ])
         .map(([ type, doc ]) => ({ type, doc }))
 
-  const [ symbol ] = readDoc(comment, '@symb')
+  const [ signature ] = readDoc(comment, '@sig')
   const [ returns ] = readDoc(comment, '@return')
   const [ category ] = readDoc(comment, '@category')
 
@@ -33,5 +33,5 @@ module.exports = async (name) => {
   const [ docComment ] = content.split('@')
   const doc = readDescription(docComment)
 
-  return { doc, params: paramsFormatted, returns, category, symbol }
+  return { doc, params: paramsFormatted, returns, category, signature }
 }

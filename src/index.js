@@ -1,10 +1,10 @@
 const R = require('ramda')
 const print = require('./print-report')
-const printInput = require('./print-input-string')
+const printUnknown = require('./print-unknown.js')
 
 const deepEqual = require('deep-equal')
 
-module.exports = (inputs, output) => {
+module.exports = async (inputs, output) => {
   const results = Object
         .entries(R) // Get list of all available Ramda functions
         .filter(([name, f]) => f.length === inputs.length) // Match signature length with input length
@@ -15,7 +15,11 @@ module.exports = (inputs, output) => {
           } catch (ex) { return false }
         })
 
-  results.length
-    ? results.forEach(async ([ func ], i) => print(inputs, output, func, i))
-    : console.log(`ramda-suggest - Could not suggest a function: f(${printInput(inputs)}) → ${printInput([output])}`)
+  const promise = Promise.all(
+    results.length
+      ? results.map(async ([ func ], i) => print(inputs, output, func, i))
+      : printUnknown(inputs, output)
+  )
+
+  promise.then(result => console.log(result.join('\n')))
 }
