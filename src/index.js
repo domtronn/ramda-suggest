@@ -16,6 +16,6 @@ module.exports = (inputs, output) => {
         })
 
   results.length
-    ? results.forEach(async ([ func ]) => print(inputs, output, func))
+    ? results.forEach(async ([ func ], i) => print(inputs, output, func, i))
     : console.log(`ramda-suggest - Could not suggest a function: f(${printInput(inputs)}) → ${printInput([output])}`)
 }
