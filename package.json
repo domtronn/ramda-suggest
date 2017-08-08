@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "bin": "bin/index.js",
   "scripts": {
-    "prepublish": "npm version"
+    "prepublish": "npm version minor"
   },
   "repository": {
     "type": "git",
@@ -24,9 +24,11 @@
   },
   "homepage": "https://github.com/domtronn/ramda-suggest#readme",
   "dependencies": {
-    "jsdoc": "^3.5.4",
+    "deep-equal": "^1.0.1",
     "mz": "^2.6.0",
-    "ramda": "^0.24.1",
-    "yargs": "^8.0.2"
+    "ramda": "^0.24.1"
+  },
+  "devDependencies": {
+    "pre-commit": "^1.2.2"
   }
 }
