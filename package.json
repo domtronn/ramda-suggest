@@ -1,0 +1,30 @@
+{
+  "name": "ramda-suggest",
+  "version": "1.0.0",
+  "description": "A library to suggest functions to use given some input and a desired output",
+  "main": "bin/index.js",
+  "bin": "bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/domtronn/ramda-suggest.git"
+  },
+  "keywords": [
+    "ramda",
+    "utility",
+    "help",
+    "documentation"
+  ],
+  "author": "Dom Charlesworth <dgc336@gmail.com> (http://domcharlesworth.co.uk/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/domtronn/ramda-suggest/issues"
+  },
+  "homepage": "https://github.com/domtronn/ramda-suggest#readme",
+  "dependencies": {
+    "ramda": "^0.24.1",
+    "yargs": "^8.0.2"
+  }
+}
