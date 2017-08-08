@@ -1,5 +1,6 @@
 const R = require('ramda')
-const print = require('../src/print-report')
+const print = require('./print-report')
+const printInput = require('./print-input-string')
 
 module.exports = (inputs, output) => {
   const results = Object
@@ -13,5 +14,5 @@ module.exports = (inputs, output) => {
 
   results.length
     ? results.forEach(async ([ func ]) => print(inputs, output, func))
-    : console.log(`ramda-suggest - Could not suggest a function: f(${inputs.map(JSON.stringify)}) → ${output}`)
+    : console.log(`ramda-suggest - Could not suggest a function: f(${printInput(inputs)}) → ${output}`)
 }
