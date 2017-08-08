@@ -3,9 +3,9 @@
   "version": "1.2.0",
   "description": "A library to suggest functions to use given some input and a desired output",
   "main": "src/index.js",
-  "bin": "bin/index.js",
+  "bin": "bin/ramda-suggest.js",
   "scripts": {
-    "prepublish": "npm version minor"
+    "deploy": "npm version patch && npm publish"
   },
   "repository": {
     "type": "git",
