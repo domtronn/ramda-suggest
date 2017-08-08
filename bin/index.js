@@ -1,10 +1,13 @@
 #! /usr/bin/env node
 const R = require('ramda')
-const [ output, ...inputs ] = process.argv.slice(2).reverse()
+const docString = require('../src/read-doc-string')
 
-// If not output, error
-// console.log(inputs, output)
+// Need to pre process the inputs to cast them into their actual types?
+let [ output, ...inputs ] = process.argv.slice(2).reverse()
+inputs = inputs.map(input => /^\[/.test(input) ? input.replace(/[\[\]]/g, '').split(/[, ]+/) : input)
 
+// Separate this into a function that takes a list of inputs and output...
+// This way it can be used programatically
 Object
   .entries(R)
   .filter(([name, f]) => f.length === inputs.length)
@@ -15,6 +18,13 @@ Object
       return f.apply({}, inputs) == output
     } catch (ex) { return false }
   })
-  .forEach(([ name, f ]) => {
-    console.log(`${name}: R.${name}(${inputs.join(',')}) == ${output}`)
+  .forEach(async ([ name, f ]) => {
+    const { doc, params, returns, category } = await docString(name)
+
+    console.log(`${name} [type:${category}] : R.${name}(${inputs.join(', ')}) → ${output}`)
+    console.log()
+    console.log(doc)
+    console.log()
+    params.forEach(({ type, doc }, i) => console.log(` param ${i + 1}: {${type}} ${doc}`))
+    console.log(` returns: ${returns}`)
   })

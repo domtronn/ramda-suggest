@@ -24,6 +24,8 @@
   },
   "homepage": "https://github.com/domtronn/ramda-suggest#readme",
   "dependencies": {
+    "jsdoc": "^3.5.4",
+    "mz": "^2.6.0",
     "ramda": "^0.24.1",
     "yargs": "^8.0.2"
   }
