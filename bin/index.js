@@ -11,7 +11,9 @@ let [ output, ...inputs ] = process.argv
         // eslint-disable-next-line
         return eval(s)
       } catch (e) {
-        return s
+        try {
+          return JSON.parse(s)
+        } catch (e) { return s }
       }
     })
 
