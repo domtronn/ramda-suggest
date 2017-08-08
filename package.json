@@ -2,7 +2,7 @@
   "name": "ramda-suggest",
   "version": "1.0.0",
   "description": "A library to suggest functions to use given some input and a desired output",
-  "main": "bin/index.js",
+  "main": "src/index.js",
   "bin": "bin/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
