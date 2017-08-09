@@ -1,11 +1,11 @@
-const { cond, is, compose, map, join, T, toString } = require('ramda')
+const { cond, is, prop, both, compose, map, join, T, toString } = require('ramda')
 const { fromCharCode: char } = String
 
 // Text formatters
 const formatArgs = (arg, i) => `${char(i + 97)}: ${formatPred(arg)}`
 const formatPred = cond([
   [is(Function), toString],
-  [is(Object), ({ args, ret }) => `(${[].concat(args).map(formatArgs)}) => ${JSON.stringify(ret)}`],
+  [both(prop('ret'), prop('args')), ({ args, ret }) => `(${[].concat(args).map(formatArgs)}) => ${JSON.stringify(ret)}`],
   [T, JSON.stringify]
 ])
 
