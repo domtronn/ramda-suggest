@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "bin": "bin/ramda-suggest.js",
   "scripts": {
-    "deploy": "npm version patch && npm publish"
+    "deploy": "npm version patch -m \"📦 Update to %s\" && npm publish"
   },
   "repository": {
     "type": "git",
