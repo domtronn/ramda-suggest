@@ -135,7 +135,63 @@ ramda-suggest '(a) => a + 5' '() => 10' '() => 15'
 #  returns: {Function}
 ```
 
-_*N.B.* currently, you can only provide 0-ary output functions... I'm
-working on allowing you to also pass arguments to the output functions_
+###### _Complex output functions_
+
+For output functions which **take arguments**, you should pass them in
+using the following format;
+
+```js
+("value_1", "value_2") => "return_string"
+```
+
+This will define an **output** function which when called with the **2**
+arguments, `"value_1"` & `"value_2"` _(both strings)_ expects the
+**return** to be `"return_string"`.
+
+```sh
+ramda-suggest '(a) => a + 2' '(a) => a * 2' '(5) => 12'
+
+# compose [category:Function]
+# 
+#     R: R.compose((a) => a + 2, (a) => a * 2) → (a: 5) => 12
+#     λ: ((y → z), (x → y), ..., (o → p), ((a, b, ..., n) → o)) → ((a, b, ..., n) → z)
+# 
+#  Performs right-to-left function composition. The rightmost function may have
+#  any arity; the remaining functions must be unary.
+# 
+#  param 1: {...Function} ...functions The functions to compose
+#  returns: {Function}
+```
+
+In the above example, you have two functions which take arguments, and
+when composed together basiaclly perform `(a) => (a * 2) + 2`, in this
+case, we would expect that when we call the returned function with a
+value of `5`, we should get `12` out.
+
+This would also work with the _following_ examples
+
+* `ramda-suggest '(a) => a + 2' '(a) => a * 2' '(10) => 22'`
+* `ramda-suggest '(a) => a + 2' '(a) => a * 2' '(100) => 202'`
+* `ramda-suggest '(a) => a + 2' '(a) => a * 2' '(2) => 6'`
+
+###### _Complexer outputer functionser_
+
+You can also use other _primtive types_ as return values from your
+output functions, for example
+
+```sh
+ramda-suggest '(a) => [a, 2]' '(a) => a * 2' '(100) => [200, 2]'
+ 
+# compose [category:Function]
+# 
+#     R: R.compose((a) => [a, 2], (a) => a * 2) → (a: 100) => [200,2]
+#     λ: ((y → z), (x → y), ..., (o → p), ((a, b, ..., n) → o)) → ((a, b, ..., n) → z)
+# 
+#  Performs right-to-left function composition. The rightmost function may have
+#  any arity; the remaining functions must be unary.
+# 
+#  param 1: {...Function} ...functions The functions to compose
+#  returns: {Function}
+```
 
 [▲ back to top](#readme)
