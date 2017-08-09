@@ -5,6 +5,8 @@
 <b><a href="#usage">Usage</a></b>
 |
 <b><a href="#non-primitive-inputs-">Non-Primitive Inputs</a></b>
+|
+<b><a href="#function-outputs-">Functions as Outputs</a></b>
 </p>
 
 This is a library inspired
@@ -57,7 +59,7 @@ ramda-suggest 42 41
 #  returns: {Number} n - 1
 ```
 
-#### Non-Primitive Inputs 🐵
+### Non-Primitive Inputs 🐵
 ##### _Be Warned!_ ⚠️
 
 The easiest way allow inputs of things other that just primitive
@@ -111,4 +113,29 @@ ramda-suggest '(a, b) => a + b' 0 [1,2,3,4] 10
 #  param 1: {Function} fn The iterator function. Receives two values, the accumulator and the, param 2: {*} acc The accumulator value., param 3: {Array} list The list to iterate over.
 #  returns: {*} The final, accumulated value.
 ```
+
+### Function Outputs 🙊
+
+A lot of the time, **Ramda** will return a _function_ rather than
+actual output - You can also test these in the same way you would pass
+in functions as arguments! _e.g._
+
+```bash
+ramda-suggest '(a) => a + 5' '() => 10' '() => 15'
+
+# compose [category:Function]
+# 
+#     R: R.compose((a) => a + 5, () => 10) → () => 15
+#     λ: ((y → z), (x → y), ..., (o → p), ((a, b, ..., n) → o)) → ((a, b, ..., n) → z)
+# 
+#  Performs right-to-left function composition. The rightmost function may have
+#  any arity; the remaining functions must be unary.
+# 
+#  param 1: {...Function} ...functions The functions to compose
+#  returns: {Function}
+```
+
+_*N.B.* currently, you can only provide 0-ary output functions... I'm
+working on allowing you to also pass arguments to the output functions_
+
 [▲ back to top](#readme)
