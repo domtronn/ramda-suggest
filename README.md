@@ -9,6 +9,13 @@
 <b><a href="#function-outputs-">Functions as Outputs</a></b>
 </p>
 
+<p align="center">
+  <a href="https://www.npmjs.com/package/ramda-suggest"><img src="https://badge.fury.io/js/ramda-suggest.svg"></a>
+  <a href="https://github.com/domtronn/ramda-suggest/releases"><img src="https://img.shields.io/github/tag/domtronn/ramda-suggest"></a>
+  <a href="https://github.com/domtronn/ramda-suggest/blob/master/LICENSE"><img src="https://img.shields.io/github/license/mashape/apistatus.svg"></a>
+</p>
+
+
 This is a library inspired
 by [`suggest.el`](https://github.com/Wilfred/suggest.el) and the
 constant _(valid)_ feedback I get from people new
