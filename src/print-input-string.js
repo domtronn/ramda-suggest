@@ -5,7 +5,7 @@ const { fromCharCode: char } = String
 const formatArgs = (arg, i) => `${char(i + 97)}: ${formatPred(arg)}`
 const formatPred = cond([
   [is(Function), toString],
-  [is(Object), ({ args, ret }) => `(${args.map(formatArgs)}) => ${JSON.stringify(ret)}`],
+  [is(Object), ({ args, ret }) => `(${[].concat(args).map(formatArgs)}) => ${JSON.stringify(ret)}`],
   [T, JSON.stringify]
 ])
 
