@@ -34,7 +34,7 @@ R.sum([1, 2, 3, 4, 5]) = 15
 
 Install this package in the typical way; 
 
-```bash
+```sh
 npm install -g ramda-suggest
 
 ramda-suggest true
@@ -48,7 +48,7 @@ ramda-suggest true
 ```
 
 
-```bash
+```sh
 ramda-suggest 42 41
 
 # dec  [type:Math] : R.dec(42) → 41
@@ -71,7 +71,7 @@ bear in mind that `eval` will just evaluate whatever **you** pass in
 in the following formats;
 
 ###### _Strings_
-```bash
+```sh
 ramda-suggest foo bar foobar
 
 # concat  [type:List] : R.concat("foo", "bar") → foobar
@@ -87,7 +87,7 @@ ramda-suggest foo bar foobar
 ```
 
 ###### _Arrays_
-```bash
+```sh
 ramda-suggest [1,2,3,4,5] 15
 ramda-suggest '[1, 2, 3, 4, 5]' 15
 
@@ -101,7 +101,7 @@ ramda-suggest '[1, 2, 3, 4, 5]' 15
 
 ###### _Functions_
 Functions _must_ be placed inside strings
-```bash 
+```sh 
 ramda-suggest '(a, b) => a + b' 0 [1,2,3,4] 10
 
 # reduce  [type:List] : R.reduce((a, b) => a + b, 0, [1,2,3,4]) → 10
@@ -120,7 +120,7 @@ A lot of the time, **Ramda** will return a _function_ rather than
 actual output - You can also test these in the same way you would pass
 in functions as arguments! _e.g._
 
-```bash
+```sh
 ramda-suggest '(a) => a + 5' '() => 10' '() => 15'
 
 # compose [category:Function]
