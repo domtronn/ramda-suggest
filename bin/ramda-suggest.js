@@ -18,8 +18,8 @@ inputs = inputs.reverse()
 
 let outputInput, outputReturn
 
-if (/\(.*?\) => .*/.test(output.toString())) {
-  [, outputInput, outputReturn] = /\((.*?)\) => (.*)/.exec(output.toString())
+if (/\(.*?\) => .*/.test(`${output}`)) {
+  [, outputInput, outputReturn] = /\((.*?)\) => (.*)/.exec(`${output}`)
 
   const args = outputInput.split(/, ?/).map(parseArg).filter(a => a)
   const ret = parseArg(outputReturn)
