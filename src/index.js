@@ -7,13 +7,17 @@ const deepEqual = require('deep-equal')
 
 module.exports = async (inputs, output) => {
   const results = Object
-        // Get list of all available Ramda functions
+  // Get list of all available Ramda functions
         .entries(R)
-        // Match signature length with input length, ignoring compose functions
-        .filter(([name, f]) => /compose/.test(name) || f.length === inputs.length)
-        // Unfold seems to cause stack trace problems...
-        .filter(([name]) => name !== 'unfold')
-        .filter(([name, f]) => { // Test function with input and compare to desired output
+  // Match signature length with input length
+  // Keep compose functions and remove unfold
+        .filter(([name, f]) => {
+          if (name === 'unfold') return false
+          if (/compose/.test(name)) return true
+          return f.length === inputs.length
+        })
+  // Test function with input and compare to desired output
+        .filter(([name, f]) => {
           try {
             let result = f.apply({}, inputs)
 
@@ -23,9 +27,11 @@ module.exports = async (inputs, output) => {
           } catch (ex) { return false }
         })
 
-  Promise.all(
-    results.length
-      ? results.map(async ([ func ], i) => print(inputs, output, func, i))
-      : printUnknown(inputs, output)
-  ).then(result => console.log(result.join('\n')))
+  const promise = results.length
+        ? Promise.all(results.map(async ([ func ], i) => print(inputs, output, func, i))).then()
+        : printUnknown(inputs, output)
+
+  
+  
+  promise.then(result => console.log(result.join('\n')))
 }
