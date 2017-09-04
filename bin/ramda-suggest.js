@@ -7,8 +7,9 @@ const parseArg = (arg) => {
   } catch (e) {
     try {
       // Eval is used here to easily cast data types, eslint can shutup
-      // eslint-disable-next-line
-      return eval(arg)
+      return arg.toString().startsWith('{') && arg.toString().endsWith('}')
+        ? eval(`(${arg})`) // eslint-disable-line
+        : eval(arg)        // eslint-disable-line
     } catch (e) { return arg.toString() }
   }
 }
@@ -37,5 +38,8 @@ if (/\(.*?\) => .*/.test(`${output}`)) {
 
   output = { args, ret }
 }
+
+if (process.env.DEBUG) { console.log(`INPUTS: ${inputs}`) }
+if (process.env.DEBUG) { console.log(`OUTPUT: ${output}`) }
 
 suggest(inputs, output)
