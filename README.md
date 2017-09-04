@@ -109,7 +109,7 @@ ramda-suggest a '{a:1,b:2,c:3}' '{b:2,c3:}'
 #  returns: {Object} A new object equivalent to the original but without the specified property
 ```
 
-_Note that Objects **must** be wrapped in single quotes - This is a
+_Note that Objects **must** be passed in as string - i.e. wrapped in quotes - This is a
 limitation of how Node parses command line args._
 
 ###### _Arrays_
