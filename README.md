@@ -93,6 +93,25 @@ ramda-suggest foo bar foobar
 #  returns: {Array|String} A list consisting of the elements of `firstList` followed by...
 ```
 
+###### _Objects_
+```sh
+ramda-suggest a '{a:1,b:2,c:3}' '{b:2,c3:}'
+
+# dissoc [category:Object]
+# 
+#     R: R.dissoc("a", {"a":1,"b":2,"c":3}) → {"b":2,"c":3}
+#     λ: String → {k: v} → {k: v}
+# 
+#  Returns a new object that does not contain a prop property.
+# 
+#  param 1: {String} prop The name of the property to dissociate
+#  param 2: {Object} obj The object to clone
+#  returns: {Object} A new object equivalent to the original but without the specified property
+```
+
+_Note that Objects **must** be wrapped in single quotes - This is a
+limitation of how Node parses command line args._
+
 ###### _Arrays_
 ```sh
 ramda-suggest [1,2,3,4,5] 15
