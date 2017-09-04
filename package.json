@@ -1,6 +1,6 @@
 {
   "name": "ramda-suggest",
-  "version": "1.3.4",
+  "version": "1.3.5",
   "description": "A library to suggest functions to use given some input and a desired output",
   "main": "src/index.js",
   "bin": "bin/ramda-suggest.js",
